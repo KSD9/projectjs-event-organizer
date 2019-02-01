@@ -1,4 +1,4 @@
-//1. Kолекция с всички събития.
+//1. 
 var Events = {
     id: [],
     name: [],
@@ -6,7 +6,7 @@ var Events = {
     attendants: []
 };
 
-//2. Извежда всички вече съхранени събития, като визуализира цялата необходима информация за тях.
+//2. 
 var printAllEvents = function(){
     for(var i = 0; i < Events.id.length; i++){
         printEventInfo(Events.id[i]);
@@ -23,11 +23,11 @@ var printEventInfo = function(eventId){
         return;
     }
 
-    var index = Events.id.indexOf(eventId);
-    console.log("Event " + Events.id[index] + ": " + Events.name[index] + ". " + checkAccess(Events.access[index]));
+    
+    console.log("Event " + Events.id[eventId] + ": " + Events.name[eventId] + ". " + checkAccess(Events.access[eventId]));
 };
 
-//3. Изтрива събитие по уникален идентификатор, и извежда съобщение за успешно извършена операция.
+//3. 
 
 var  deleteEvent = function(eventId){
     if(isNaN(eventId)){
@@ -54,8 +54,7 @@ var  deleteEvent = function(eventId){
 
 
 
-// //4. Създава ново събитие. Задължителни атрибути на събитието са неговото име.
-// //Ако потребителя не подаде флаг, указващ дали събитието е подходящо за непълнолетни то по подразбиране е.
+// //4. 
 
 var eventIdCounter = 0;
 
@@ -91,10 +90,29 @@ var checkAccess = function(value){
     }
 };
 
+// 5.
+var updateEventInfo = function(eventId, eventName, isForAdults){
+
+    if(isNaN(eventId)){
+        console.log("Моля въвете число.");
+        return;
+    }
+    if(eventId > eventIdCounter){
+        console.log("Не е намерено събитие с такъв номер.");
+        return;
+    }
+
+    Events.id[eventId] = eventId;
+    Events.name[eventId] = eventName;
+    Events.access[eventId] = isForAdults;
+    console.log("Евентът е променен");
+    printEventInfo(eventId);
+};
+
+
 createEvent("СканкаУ в клуб W",            true);
 createEvent("Гери-Никол в Сикретс",        false);
 createEvent("Баку Илия в  Мегами",         true);
 createEvent("Фики в мол Плаза",            true);
 createEvent("Групава оргия пред общината", false);
 createEvent("Еминем в летния театър",      false);
-
