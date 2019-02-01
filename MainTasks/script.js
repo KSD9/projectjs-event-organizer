@@ -294,4 +294,33 @@ var closeSystem = function(systemIsClosed, model){
     }
 }
 
+//2
 
+Events.date = [];
+
+var addDateToEvent = function(eventId, date){
+
+    var eventDate = new Date(date);
+
+    if(Events.id[eventId] < 0 || eventDate == "Invalid Date" ){
+        console.log("Моля въведете правилни данни \n форматът на датата трябва да е : yyyy/mm/dd.");
+        return;
+    }
+
+    if(Events.date[Events.id[eventId]] != undefined){
+        console.log("Евентът вече има дата");
+        return;
+    }
+
+    if(eventDate < new Date()){
+        console.log("Не може да бъде записана по-стара дата от текущата");
+        return;
+    }
+    
+    Events.date[Events.id[eventId]] = new Date(eventDate);
+    console.log("Датата на евент номер: " + eventId + " е добавена успешно.");
+
+};
+
+addDateToEvent(2, "2019/10/05");
+addDateToEvent(5, "2019/02/17");
