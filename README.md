@@ -8,7 +8,7 @@ http://js.mihail-petrov.me/projects/project_1.pdf
 
 ## Команди
 ```javascript
-
+//Основни задачи
 printAllEvents();
 
 printEventInfo(eventId);
@@ -31,5 +31,8 @@ showAttendantsAtEvent(eventId, gender);
 
 removeAttendantFromEvent(eventId, attendantId);
 
+//Бонус задачи
+
+closeSystem(systemIsClosed, model);
 
 ```

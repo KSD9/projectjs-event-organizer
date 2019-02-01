@@ -59,6 +59,11 @@ var  deleteEvent = function(eventId){
 var eventIdCounter = 0;
 
 var createEvent = function(name, isForAdults){
+    if(eventsAddingShutdown){
+        console.log("Системата е затворена");
+        return;
+    }
+
     if(name == null){
         console.log("Моля въведете име на събитието");
         return;
@@ -119,6 +124,11 @@ var Attendants = {
 var idCounter = 0;
 
 var createAttendant = function(attendantName, gender, age){
+
+    if(attendantsAddingShutdown){
+        console.log("Системата е затворена");
+        return;
+    }
     if(attendantName == null || gender == null || age == null || typeof attendantName != "string" || (gender != "female" && gender != "male") || isNaN(age) || age < 0){ 
         console.log("Моля въведете правилни данни");
         return;
@@ -259,3 +269,29 @@ addAttendantToEvent(4,3);
 addAttendantToEvent(1,4);
 addAttendantToEvent(2,5);
 addAttendantToEvent(4,5);
+
+// Бонус задачи 1
+
+//1. 
+
+var eventsAddingShutdown = false;
+var attendantsAddingShutdown = false;
+
+var closeSystem = function(systemIsClosed, model){
+    if(typeof systemIsClosed !== "boolean" || (model != 'events' && model != 'attendants')){
+        console.log("Моля въведете правилни данни. true, false за достъп до системата и 'events' или 'attendants' за модела.");        
+        return;        
+    }
+    
+    if(model == 'events'){
+
+        eventsAddingShutdown = true;
+        console.log("Системата е затворена за добавяне на нови евенти");
+    }
+    else if(model == 'attendants'){
+        attendantsAddingShutdown = true;
+        console.log("Системата е затворена за добавяне на нови посетители");
+    }
+}
+
+
