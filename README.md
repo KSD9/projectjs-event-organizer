@@ -35,4 +35,6 @@ removeAttendantFromEvent(eventId, attendantId);
 
 closeSystem(systemIsClosed, model);
 
+addDateToEvent(eventId,date);
+
 ```
